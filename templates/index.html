@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Camera</title>
+    <link rel="stylesheet" href="/static/style.css?v=3">
+</head>
+
+<body>
+
+<div class="center-container">
+
+    <h1>SMART CAMERA</h1>
+
+    <button class="capture-btn" onclick="takePic()">
+        Take a Pic
+    </button>
+
+</div>
+
+<script>
+function takePic() {
+    fetch("/take_pic")
+        .then(r => r.json())
+        .then(data => {
+            if (data.captured) {
+                window.location.href = "/preview";
+            }
+        });
+}
+</script>
+
+</body>
+</html>

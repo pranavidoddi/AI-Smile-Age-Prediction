@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Preview</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="preview-layout">
+
+    <img src="/static/capture.jpg">
+
+</div>
+
+<div class="buttons">
+
+    <button class="retake-btn" onclick="retake()">
+        Retake
+    </button>
+
+    <button class="save-btn" onclick="save()">
+        Save
+    </button>
+
+</div>
+
+<div class="details-panel">
+
+    <h2>Detected Faces</h2>
+
+    {% for fid, age in ages.items() %}
+        <p>Face {{ fid }} → {{ age }}</p>
+    {% endfor %}
+
+</div>
+
+<script>
+
+function retake() {
+    fetch("/take_pic")
+        .then(r => r.json())
+        .then(data => {
+            if (data.captured) {
+                location.reload();
+            }
+        });
+}
+
+function save() {
+    fetch("/save")
+        .then(r => r.json())
+        .then(data => {
+            alert("Saved Successfully ✅");
+        });
+}
+
+</script>
+
+</body>
+</html>

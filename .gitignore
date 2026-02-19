@@ -1,0 +1,14 @@
+myenv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.vscode/
+*.h5
+*.pb
+*.pt
+*.pth
+*.caffemodel
+*.weights
+.DS_Store
